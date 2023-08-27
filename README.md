@@ -31,14 +31,14 @@ STEP: Remove the custom user from the Dockerfile to simplify, because HF needs w
 
 STEP: Add volume to `compose.yaml`:
 
-STEP Run `docker compose up --build`
-
-STEP: Attach VS Code to running container
-
 ```
     volumes:
       - .:/app
 ```
+
+STEP Run `docker compose up --build`
+
+STEP: Attach VS Code to running container
 
 ## Examples
 
