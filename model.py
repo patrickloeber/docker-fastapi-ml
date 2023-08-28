@@ -6,7 +6,7 @@ processor = ViltProcessor.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
 model = ViltForQuestionAnswering.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
 
 
-def pipeline(image: Image, text: str):
+def model_pipeline(text: str, image: Image):
     # prepare inputs
     encoding = processor(image, text, return_tensors="pt")
 
@@ -15,4 +15,4 @@ def pipeline(image: Image, text: str):
     logits = outputs.logits
     idx = logits.argmax(-1).item()
 
-    return model.config.id2label[idx]
+    return  model.config.id2label[idx]

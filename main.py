@@ -1,27 +1,29 @@
-import io
+from model import model_pipeline
 
-from model_pipeline import pipeline
-from PIL import Image
+from typing import Union
 
 from fastapi import FastAPI, UploadFile
-from pydantic import BaseModel
+import io
+from PIL import Image
 
 app = FastAPI()
-
- 
-class ModelOutput(BaseModel):
-    answer: str
 
 
 @app.get("/")
 def read_root():
-    return {"Hello": "Wooorld11"}
+    return {"Hello": "World"}
 
 
-@app.post("/ask", response_model=ModelOutput)
-async def ask(file: UploadFile, text: str):    
-    contents = await file.read()
-    image = Image.open(io.BytesIO(contents))
+@app.post("/ask")
+def ask(text: str, image: UploadFile):
+    content = image.file.read()
     
-    output = pipeline(image, text)
-    return {"answer": output}
+    image = Image.open(io.BytesIO(content))
+    # image = Image.open(image.file)
+    
+    result = model_pipeline(text, image)
+    return {"answer": result}
+    
+    
+    
+    

@@ -2,7 +2,7 @@ An example app that shows how to build a ML app with FastAPI and Docker.
 
 The starter file is [model_starter.py](model_starter.py) with a model from Hugging Face: https://huggingface.co/dandelin/vilt-b32-finetuned-vqa
 
-The final app is in [main.py](main.py) and final model code is in [model_pipeline.py](model_pipeline.py).
+The final app is in [main.py](main.py) and final model code is in [model.py](model.py).
 
 Below are the steps to use Docker:
 
